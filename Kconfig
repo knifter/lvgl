@@ -843,21 +843,21 @@ menu "LVGL configuration"
             default 0
         config LV_FS_STDIO_PATH
             string "Set the working directory"
-            depends on LV_USE_FS_STDIO
+            depends on LV_USE_FS_STDIO != 0
 
         config LV_USE_FS_POSIX
             int "File system on top of posix API"
             default 0
         config LV_FS_POSIX_PATH
             string "Set the working directory"
-            depends on LV_USE_FS_POSIX
+            depends on LV_USE_FS_POSIX != 0
 
         config LV_USE_FS_WIN32
             int "File system on top of Win32 API"
             default 0
         config LV_FS_WIN32_PATH
             string "Set the working directory"
-            depends on LV_USE_FS_WIN32
+            depends on LV_USE_FS_WIN32 != 0
 
         config LV_USE_FS_FATFS
             int "File system on top of FatFS"
@@ -924,6 +924,52 @@ menu "LVGL configuration"
         config LV_BUILD_EXAMPLES
             bool "Enable the examples to be built"
             default y if !LV_CONF_MINIMAL
+    endmenu
+
+    menu "Demos"
+        config LV_USE_DEMO_WIDGETS
+            bool "Show some widget"
+            default n
+        config LV_DEMO_WIDGETS_SLIDESHOW
+            bool "Enable slide show"
+            depends on LV_USE_DEMO_WIDGETS
+            default n
+
+        config LV_USE_DEMO_KEYPAD_AND_ENCODER
+            bool "Demonstrate the usage of encoder and keyboard"
+            default n
+
+        config LV_USE_DEMO_BENCHMARK
+            bool "Benchmark your system"
+            default n
+
+        config LV_USE_DEMO_STRESS
+            bool "Stress test for LVGL"
+            default n
+
+        config LV_USE_DEMO_MUSIC
+            bool "Music player demo"
+            default n
+        config LV_DEMO_MUSIC_SQUARE
+            bool "Enable Square"
+            depends on LV_USE_DEMO_MUSIC
+            default n
+        config LV_DEMO_MUSIC_LANDSCAPE
+            bool "Enable Landscape"
+            depends on LV_USE_DEMO_MUSIC
+            default n
+        config LV_DEMO_MUSIC_ROUND
+            bool "Enable Round"
+            depends on LV_USE_DEMO_MUSIC
+            default n
+        config LV_DEMO_MUSIC_LARGE
+            bool "Enable Large"
+            depends on LV_USE_DEMO_MUSIC
+            default n
+        config LV_DEMO_MUSIC_AUTO_PLAY
+            bool "Enable Auto play"
+            depends on LV_USE_DEMO_MUSIC
+            default n
     endmenu
 
 endmenu
