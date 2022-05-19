@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'pull_request' || github.repository != github.event.pull_request.head.repo.full_name }}
     name: Build ${{ matrix.port }} port
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -43,7 +44,7 @@ jobs:
     - name: Setup ESP-IDF
       if: matrix.port == 'esp32'
       run: |
-        source tools/ci.sh && ci_esp32_idf43_setup
+        source tools/ci.sh && ci_esp32_idf44_setup
     - name: Build ESP32 port
       if: matrix.port == 'esp32'
       run: |

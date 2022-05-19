@@ -41,16 +41,6 @@
  *=======================*/
 
 /*-------------
- * Logging
- *-----------*/
-
-#ifdef PKG_LVGL_ENABLE_LOG
-#  define LV_USE_LOG 1
-#else
-#  define LV_USE_LOG 0
-#endif
-
-/*-------------
  * Asserts
  *-----------*/
 
@@ -71,7 +61,7 @@
  *  COMPILER SETTINGS
  *====================*/
 
-#ifdef RT_USING_BIG_ENDIAN
+#ifdef ARCH_CPU_BIG_ENDIAN
 #  define LV_BIG_ENDIAN_SYSTEM 1
 #else
 #  define LV_BIG_ENDIAN_SYSTEM 0
@@ -83,7 +73,7 @@
 * EXAMPLES
 *==================*/
 
-#ifdef PKG_USING_LVGL_EXAMPLES
+#ifdef PKG_LVGL_USING_EXAMPLES
 #  define LV_BUILD_EXAMPLES 1
 #endif
 
